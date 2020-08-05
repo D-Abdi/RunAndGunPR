@@ -1,0 +1,234 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://assets/Sprites/Player/industrial.v2.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.32647
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3.80977, 6.47303 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "attack"
+length = 0.15
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 288, 16, 16 ), Rect2( 16, 288, 16, 16 ), Rect2( 32, 288, 16, 16 ), Rect2( 48, 288, 16, 16 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.03, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "_shoot"
+}, {
+"args": [  ],
+"method": "attack_finished"
+} ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "death"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 256, 16, 16 ), Rect2( 64, 256, 16, 16 ), Rect2( 80, 256, 16, 16 ), Rect2( 48, 416, 16, 16 ), Rect2( 64, 416, 16, 16 ), Rect2( 80, 416, 16, 16 ), Rect2( 96, 416, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 256, 16, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 256, 16, 16 ), Rect2( 32, 256, 16, 16 ), Rect2( 48, 256, 16, 16 ), Rect2( 96, 256, 16, 16 ), Rect2( 112, 256, 16, 16 ), Rect2( 0, 256, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 272, 16, 16 ), Rect2( 16, 272, 16, 16 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Rect2( 0, 272, 16, 16 ), Rect2( 16, 272, 16, 16 ), Rect2( 32, 272, 16, 16 ), Rect2( 48, 272, 16, 16 ), Rect2( 64, 272, 16, 16 ), Rect2( 80, 272, 16, 16 ), Rect2( 96, 272, 16, 16 ), Rect2( 112, 272, 16, 16 ), Rect2( 0, 272, 16, 16 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "death"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "hurt"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachine" id=24]
+states/attack/node = SubResource( 9 )
+states/attack/position = Vector2( 369, 115 )
+states/death/node = SubResource( 10 )
+states/death/position = Vector2( 738, -6.3924 )
+states/hurt/node = SubResource( 11 )
+states/hurt/position = Vector2( 539, 3 )
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 539, 115 )
+states/jump/node = SubResource( 13 )
+states/jump/position = Vector2( 539, 213 )
+states/walk/node = SubResource( 14 )
+states/walk/position = Vector2( 738, 115 )
+transitions = [ "idle", "attack", SubResource( 15 ), "attack", "idle", SubResource( 16 ), "idle", "walk", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "jump", "idle", SubResource( 19 ), "idle", "jump", SubResource( 20 ), "idle", "hurt", SubResource( 21 ), "hurt", "idle", SubResource( 22 ), "idle", "death", SubResource( 23 ) ]
+start_node = "idle"
+graph_offset = Vector2( 0, -7.69589 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 3
+collision_mask = 4
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0.595272, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 256, 16, 16 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( -0.0654774, 4.82937 )
+shape = SubResource( 2 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 0.00784314, 0.976471, 0, 1 )
+position = Vector2( 0.0748272, 1.04106 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 3 )
+anims/death = SubResource( 26 )
+anims/hurt = SubResource( 27 )
+anims/idle = SubResource( 28 )
+anims/jump = SubResource( 7 )
+anims/walk = SubResource( 8 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 24 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 25 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
